@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Week 1 Picks &middot; Vetter Football Analytics</title>
+<meta name="description" content="Week 1 2026 NFL spread picks that pass a
+key-number filter, with the model drivers behind each and the backtest that qualified them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F6F7F9; --card:#FFFFFF; --line:#DDE1E7;
+  --tx:#1B1F26; --tx2:#5A6472; --tx3:#8A929E;
+  --brass:#A87833; --for:#2C6E4F; --agst:#A8452C; --rail:#EDEFF3;
+  --disp:"Barlow Condensed",Impact,"Arial Narrow",sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0F1216; --card:#171B21; --line:#282E37;
+  --tx:#E6E9ED; --tx2:#9AA3AF; --tx3:#6E7885;
+  --brass:#D6A45B; --for:#5FA37C; --agst:#D2725A; --rail:#1E242C;
+}}
+:root[data-theme="dark"]{
+  --paper:#0F1216; --card:#171B21; --line:#282E37;
+  --tx:#E6E9ED; --tx2:#9AA3AF; --tx3:#6E7885;
+  --brass:#D6A45B; --for:#5FA37C; --agst:#D2725A; --rail:#1E242C;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--tx);font-family:var(--body);
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:clamp(22px,5vw,56px) clamp(18px,5vw,32px) 72px}
+.k{font-family:var(--disp);text-transform:uppercase;letter-spacing:.1em;font-size:11px;
+  font-weight:600;color:var(--tx3);display:block}
+header{border-bottom:2px solid var(--tx);padding-bottom:20px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--brass);margin:0 0 10px}
+h1{font-family:var(--disp);font-weight:700;font-size:clamp(40px,9vw,66px);line-height:.95;
+  margin:0;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--tx3)}
+.lede{color:var(--tx2);margin:16px 0 0;max-width:62ch}
+.rule{margin:26px 0 34px;border-left:3px solid var(--brass);background:var(--card);
+  padding:16px 20px;border-radius:0 3px 3px 0}
+.rule .k{margin-bottom:8px}
+.rule p{margin:0;font-size:16px;color:var(--tx2)}
+.rule b{color:var(--tx);font-family:var(--mono);font-size:14.5px}
+.picks{display:flex;flex-direction:column;gap:16px}
+.pick{background:var(--card);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.ptop{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 14px;
+  padding:16px 20px 12px}
+.day{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;color:var(--tx3);
+  width:100%}
+.ptop h2{font-family:var(--disp);font-weight:600;font-size:29px;line-height:1.05;margin:4px 0 0;
+  flex:1 1 auto}
+.ptop h2 span{color:var(--tx3);font-weight:500;font-size:21px}
+.bet{font-family:var(--disp);font-weight:700;font-size:30px;color:var(--brass);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.nums{display:flex;flex-wrap:wrap;gap:22px;padding:4px 20px 14px;
+  border-bottom:1px dashed var(--line)}
+.nums div span:last-child{font-family:var(--mono);font-size:13.5px;
+  font-variant-numeric:tabular-nums;color:var(--tx)}
+.drv{display:grid;grid-template-columns:1.3fr 1fr;border-top:0}
+.dcol{padding:14px 20px 16px}
+.dcol+.dcol{border-left:1px solid var(--line)}
+.dcol ul{list-style:none;margin:9px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.dcol li{display:flex;justify-content:space-between;gap:12px;font-size:15px;
+  border-bottom:1px dotted var(--line);padding-bottom:5px}
+.dcol li:last-child{border-bottom:0}
+.dcol li span:first-child{color:var(--tx2)}
+.dcol li span:last-child{font-family:var(--mono);font-size:13px;font-weight:600;
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.for .k{color:var(--for)} .for li span:last-child{color:var(--for)}
+.agst .k{color:var(--agst)} .agst li span:last-child{color:var(--agst)}
+.method{margin-top:40px;border:1px solid var(--line);background:var(--card);border-radius:3px}
+.method h3{font-family:var(--disp);text-transform:uppercase;letter-spacing:.07em;font-size:14px;
+  margin:0;padding:14px 20px;border-bottom:1px solid var(--line);color:var(--tx2)}
+.method .inner{padding:6px 20px 18px}
+.method p{font-size:15.5px;color:var(--tx2)}
+.method b{color:var(--tx)}
+table{width:100%;border-collapse:collapse;margin:14px 0 4px;font-family:var(--mono);
+  font-size:13px;font-variant-numeric:tabular-nums}
+th,td{text-align:right;padding:6px 8px;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+th{font-family:var(--disp);text-transform:uppercase;letter-spacing:.07em;font-size:11px;
+  color:var(--tx3);font-weight:600}
+.tw{overflow-x:auto}
+footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);
+  font-size:13.5px;color:var(--tx3)}
+footer p{margin:0 0 10px}
+@media (max-width:640px){
+  .drv{grid-template-columns:1fr}
+  .dcol+.dcol{border-left:0;border-top:1px solid var(--line)}
+  .bet{font-size:26px}
+}
+</style>
+</head><body>
+<div class="wrap">
+<header>
+  <p class="eyebrow">Vetter Football Analytics &middot; 2026 Season</p>
+  <h1>Week 1 Picks <em>4 plays</em></h1>
+  <p class="lede">The model priced all 16 games this week. These 4 are the only
+  ones that clear the filter below &mdash; the rest are not plays, and saying so is the
+  point.</p>
+</header>
+
+<div class="rule">
+  <span class="k">The filter</span>
+  <p>A game qualifies when the model&rsquo;s number crosses <b>exactly one</b> key NFL number
+  (0, 3, 6, 7, 10) away from the market&rsquo;s, <i>and</i> the play is a <b>road team inside
+  6 points</b> or a <b>home team beyond 6</b>. Crossing several keys at once means the model
+  has drifted far from the market, and historically that is when it is least accurate &mdash;
+  not most.</p>
+</div>
+
+<div class="picks">
+    <article class="pick">
+      <div class="ptop">
+        <div class="day">Wednesday, September 9</div>
+        <h2>Patriots <span>at</span> Seahawks</h2>
+        <div class="bet">NE +3.5</div>
+      </div>
+      <div class="nums">
+        <div><span class="k">Market</span><span>SEA −3.5</span></div>
+        <div><span class="k">Model</span><span>SEA −1.5</span></div>
+        <div><span class="k">Key crossed</span><span>3</span></div>
+        <div><span class="k">Total</span><span>47.11 vs 44.5</span></div>
+      </div>
+      <div class="drv">
+        <div class="dcol for"><span class="k">What supports it</span><ul><li><span>our QB overall</span><span>+1.06</span></li><li><span>our pass coverage</span><span>+0.99</span></li><li><span>our overall offense</span><span>+0.72</span></li></ul></div>
+        <div class="dcol agst"><span class="k">What argues against</span><ul><li><span>their overall overall defense</span><span>−1.30</span></li><li><span>their overall offense</span><span>−0.95</span></li></ul></div>
+      </div>
+    </article>
+    <article class="pick">
+      <div class="ptop">
+        <div class="day">Sunday, September 13</div>
+        <h2>Cowboys <span>at</span> Giants</h2>
+        <div class="bet">DAL −2.5</div>
+      </div>
+      <div class="nums">
+        <div><span class="k">Market</span><span>DAL −2.5</span></div>
+        <div><span class="k">Model</span><span>DAL −5.0</span></div>
+        <div><span class="k">Key crossed</span><span>3</span></div>
+        <div><span class="k">Total</span><span>50.15 vs 48.5</span></div>
+      </div>
+      <div class="drv">
+        <div class="dcol for"><span class="k">What supports it</span><ul><li><span>our QB overall</span><span>+1.81</span></li><li><span>their overall offense</span><span>+1.55</span></li><li><span>our QB passing</span><span>+0.96</span></li></ul></div>
+        <div class="dcol agst"><span class="k">What argues against</span><ul><li><span>our pass coverage</span><span>−1.14</span></li><li><span>our overall overall defense</span><span>−0.46</span></li></ul></div>
+      </div>
+    </article>
+    <article class="pick">
+      <div class="ptop">
+        <div class="day">Sunday, September 13</div>
+        <h2>Packers <span>at</span> Vikings</h2>
+        <div class="bet">GB +1.5</div>
+      </div>
+      <div class="nums">
+        <div><span class="k">Market</span><span>MIN −1.5</span></div>
+        <div><span class="k">Model</span><span>GB −2.8</span></div>
+        <div><span class="k">Key crossed</span><span>0</span></div>
+        <div><span class="k">Total</span><span>46.63 vs 46.5</span></div>
+      </div>
+      <div class="drv">
+        <div class="dcol for"><span class="k">What supports it</span><ul><li><span>our QB overall</span><span>+1.95</span></li><li><span>our QB passing</span><span>+1.12</span></li><li><span>their overall offense</span><span>+0.79</span></li></ul></div>
+        <div class="dcol agst"><span class="k">What argues against</span><ul><li><span>our overall offense</span><span>−0.52</span></li><li><span>our overall overall defense</span><span>−0.38</span></li></ul></div>
+      </div>
+    </article>
+    <article class="pick">
+      <div class="ptop">
+        <div class="day">Sunday, September 13</div>
+        <h2>Saints <span>at</span> Lions</h2>
+        <div class="bet">NO +7</div>
+      </div>
+      <div class="nums">
+        <div><span class="k">Market</span><span>DET −7</span></div>
+        <div><span class="k">Model</span><span>DET −3.7</span></div>
+        <div><span class="k">Key crossed</span><span>6</span></div>
+        <div><span class="k">Total</span><span>46.65 vs 49.5</span></div>
+      </div>
+      <div class="drv">
+        <div class="dcol for"><span class="k">What supports it</span><ul><li><span>our QB passing</span><span>+0.45</span></li><li><span>their pass protection</span><span>+0.40</span></li><li><span>their overall overall defense</span><span>+0.39</span></li></ul></div>
+        <div class="dcol agst"><span class="k">What argues against</span><ul><li><span>their overall offense</span><span>−1.37</span></li><li><span>their QB overall</span><span>−0.91</span></li></ul></div>
+      </div>
+    </article>
+</div>
+
+<section class="method">
+  <h3>How these were tested, and what the test actually said</h3>
+  <div class="inner">
+  <p>Every number here comes from a random-forest spread model built on prior-season player
+  grades. Because the shipped model was trained on every completed season, it was
+  <b>retrained for each test season</b> using only earlier data, then graded blind against
+  closing lines &mdash; 1,846 games, 2019 to 2025.</p>
+  <p><b>Bet everything the model says and you lose.</b> Straight up it went 51.8% against a
+  52.4% break-even, and 48.7% across 2023&ndash;25. Its average error was 10.75 points against
+  the market&rsquo;s 9.83, so the market is the better forecaster on most games. That result is
+  why this page is a short list rather than a full card.</p>
+  <div class="tw"><table>
+    <tr><th>Filter</th><th>Games</th><th>Win&nbsp;%</th><th>ROI</th><th>Seasons&nbsp;&gt;&nbsp;break-even</th></tr>
+    <tr><td>Every game the model prices</td><td>1,846</td><td>51.8</td><td>&minus;1.2%</td><td>3 of 7</td></tr>
+    <tr><td>Exactly one key crossed</td><td>576</td><td>55.4</td><td>+5.7%</td><td>5 of 7</td></tr>
+    <tr><td><b>One key + side filter (this page)</b></td><td><b>286</b></td><td><b>61.2</b></td><td><b>+16.8%</b></td><td><b>6 of 7</b></td></tr>
+    <tr><td>One key, side filter failed</td><td>290</td><td>49.7</td><td>&minus;5.2%</td><td>0 of 7</td></tr>
+  </table></div>
+  <p><b>Read that last row.</b> Games meeting one condition but not the other cleared
+  break-even in none of seven seasons. Both conditions carry weight, which is the main reason
+  to believe the filter is structural rather than a lucky slice.</p>
+  <p><b>What I do not claim.</b> The filter was found by searching one dataset, so its
+  significance is weaker than the headline suggests &mdash; the honest support is that it held
+  up in 6 of 7 seasons without decaying, not the p-value. Roughly 41 bets a season means small
+  samples and losing weeks are normal. No graded forward results exist yet; every one of these
+  is being tracked and will be published win or lose.</p>
+  <p>Injuries come from roster designations only &mdash; the weekly injury report is not
+  published for 2026 yet, so short-term absences are not reflected. Weather is not modeled.</p>
+  </div>
+</section>
+
+<footer>
+  <p><b>Updated 2026-09-07.</b> Lines shown are from DraftKings via ESPN at build time and will
+  move. Confirm the number before placing anything.</p>
+  <p>For entertainment and research purposes only. This is not financial advice and not a
+  guarantee of any outcome. If gambling stops being fun, call 1-800-GAMBLER.</p>
+</footer>
+</div>
+</body></html>
