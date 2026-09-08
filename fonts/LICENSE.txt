@@ -1,0 +1,10 @@
+These fonts are used under the SIL Open Font License, Version 1.1.
+
+  Barlow Condensed  - Copyright (c) Jeremy Tribby
+  Source Serif 4    - Copyright (c) Adobe Systems Incorporated
+  IBM Plex Mono     - Copyright (c) IBM Corp.
+
+Full licence text: https://scripts.sil.org/OFL
+
+The OFL permits self-hosting and redistribution. The fonts are served from this site rather
+than from fonts.googleapis.com so that no visitor's IP address is disclosed to a third party.
