@@ -149,6 +149,10 @@ th:first-child,td:first-child{text-align:left}
 th{font-family:var(--disp);text-transform:uppercase;letter-spacing:.07em;font-size:11px;
   color:var(--tx3);font-weight:600}
 .tw{overflow-x:auto}
+.record{font-family:var(--disp);font-size:34px;font-weight:700;color:var(--brass);
+  margin:10px 0 14px;line-height:1.1;letter-spacing:.005em;font-variant-numeric:tabular-nums}
+.record span{display:block;font-family:var(--mono);font-size:13px;font-weight:400;
+  color:var(--tx2);letter-spacing:0;margin-top:5px}
 footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);
   font-size:13.5px;color:var(--tx3)}
 footer p{margin:0 0 10px}
@@ -191,8 +195,8 @@ footer p{margin:0 0 10px}
         <div><span class="k">Total</span><span>47.11 vs 44.5</span></div>
       </div>
       <div class="drv">
-        <div class="dcol for"><span class="k">What supports it</span><ul><li><span>our QB overall</span><span>+1.06</span></li><li><span>our pass coverage</span><span>+0.99</span></li><li><span>our overall offense</span><span>+0.72</span></li></ul></div>
-        <div class="dcol agst"><span class="k">What argues against</span><ul><li><span>their overall overall defense</span><span>−1.30</span></li><li><span>their overall offense</span><span>−0.95</span></li></ul></div>
+        <div class="dcol for"><span class="k">What supports it</span><ul><li><span>NE quarterback play</span><span>+1.06</span></li><li><span>NE pass coverage</span><span>+0.99</span></li><li><span>NE offense</span><span>+0.72</span></li></ul></div>
+        <div class="dcol agst"><span class="k">What argues against</span><ul><li><span>SEA defense</span><span>−1.30</span></li><li><span>SEA offense</span><span>−0.95</span></li></ul></div>
       </div>
     </article>
     <article class="pick">
@@ -208,8 +212,8 @@ footer p{margin:0 0 10px}
         <div><span class="k">Total</span><span>50.15 vs 48.5</span></div>
       </div>
       <div class="drv">
-        <div class="dcol for"><span class="k">What supports it</span><ul><li><span>our QB overall</span><span>+1.81</span></li><li><span>their overall offense</span><span>+1.55</span></li><li><span>our QB passing</span><span>+0.96</span></li></ul></div>
-        <div class="dcol agst"><span class="k">What argues against</span><ul><li><span>our pass coverage</span><span>−1.14</span></li><li><span>our overall overall defense</span><span>−0.46</span></li></ul></div>
+        <div class="dcol for"><span class="k">What supports it</span><ul><li><span>DAL quarterback play</span><span>+1.81</span></li><li><span>NYG offense</span><span>+1.55</span></li><li><span>DAL QB passing</span><span>+0.96</span></li></ul></div>
+        <div class="dcol agst"><span class="k">What argues against</span><ul><li><span>DAL pass coverage</span><span>−1.14</span></li><li><span>DAL defense</span><span>−0.46</span></li></ul></div>
       </div>
     </article>
     <article class="pick">
@@ -225,8 +229,8 @@ footer p{margin:0 0 10px}
         <div><span class="k">Total</span><span>46.63 vs 46.5</span></div>
       </div>
       <div class="drv">
-        <div class="dcol for"><span class="k">What supports it</span><ul><li><span>our QB overall</span><span>+1.95</span></li><li><span>our QB passing</span><span>+1.12</span></li><li><span>their overall offense</span><span>+0.79</span></li></ul></div>
-        <div class="dcol agst"><span class="k">What argues against</span><ul><li><span>our overall offense</span><span>−0.52</span></li><li><span>our overall overall defense</span><span>−0.38</span></li></ul></div>
+        <div class="dcol for"><span class="k">What supports it</span><ul><li><span>GB quarterback play</span><span>+1.95</span></li><li><span>GB QB passing</span><span>+1.12</span></li><li><span>MIN offense</span><span>+0.79</span></li></ul></div>
+        <div class="dcol agst"><span class="k">What argues against</span><ul><li><span>GB offense</span><span>−0.52</span></li><li><span>GB defense</span><span>−0.38</span></li></ul></div>
       </div>
     </article>
     <article class="pick">
@@ -242,8 +246,8 @@ footer p{margin:0 0 10px}
         <div><span class="k">Total</span><span>46.65 vs 49.5</span></div>
       </div>
       <div class="drv">
-        <div class="dcol for"><span class="k">What supports it</span><ul><li><span>our QB passing</span><span>+0.45</span></li><li><span>their pass protection</span><span>+0.40</span></li><li><span>their overall overall defense</span><span>+0.39</span></li></ul></div>
-        <div class="dcol agst"><span class="k">What argues against</span><ul><li><span>their overall offense</span><span>−1.37</span></li><li><span>their QB overall</span><span>−0.91</span></li></ul></div>
+        <div class="dcol for"><span class="k">What supports it</span><ul><li><span>NO QB passing</span><span>+0.45</span></li><li><span>DET pass protection</span><span>+0.40</span></li><li><span>DET defense</span><span>+0.39</span></li></ul></div>
+        <div class="dcol agst"><span class="k">What argues against</span><ul><li><span>DET offense</span><span>−1.37</span></li><li><span>DET quarterback play</span><span>−0.91</span></li></ul></div>
       </div>
     </article>
 </div>
@@ -269,13 +273,31 @@ footer p{margin:0 0 10px}
   <p><b>Read that last row.</b> Games meeting one condition but not the other cleared
   break-even in none of seven seasons. Both conditions carry weight, which is the main reason
   to believe the filter is structural rather than a lucky slice.</p>
-  <p><b>What I do not claim.</b> The filter was found by searching one dataset, so its
-  significance is weaker than the headline suggests &mdash; the honest support is that it held
-  up in 6 of 7 seasons without decaying, not the p-value. Roughly 41 bets a season means small
-  samples and losing weeks are normal. No graded forward results exist yet; every one of these
-  is being tracked and will be published win or lose.</p>
-  <p>Injuries come from roster designations only &mdash; the weekly injury report is not
-  published for 2026 yet, so short-term absences are not reflected. Weather is not modeled.</p>
+  </div>
+</section>
+
+<section class="method">
+  <h3>Last season &mdash; and where this filter came from</h3>
+  <div class="inner">
+  <p class="record"><b>2025 final: 48&ndash;34&ndash;1</b>
+  <span>58.5% on 82 decisions &middot; +9.6 units at
+  &minus;110 &middot; +11.8% ROI</span></p>
+  <p>Those picks were made by judgment, five or six games most weeks. The reasoning behind
+  this year&rsquo;s filter was already in them &mdash; whether the number crossed a real
+  threshold like a field goal or a touchdown, and whether the side made sense as a road
+  underdog or a home favorite. It just was not written down, so it could not be measured, and
+  it could not be applied consistently.</p>
+  <p>This season those two instincts were turned into explicit conditions and tested against
+  1,846 games back to 2019. The formalizing changed the volume as much as anything: judgment
+  produced five or six plays a week, the written rule produces about two. Applied
+  retrospectively to 2025 it would have flagged 43 games and gone
+  27&ndash;16 (62.8%) &mdash; but that is the rule
+  simulated over last season, <i>not</i> the card that was published. The
+  48&ndash;34&ndash;1 above is the real one.</p>
+  <p><b>What that record does and does not prove.</b> 82 bets is a small
+  sample: at that size a genuine 58% edge and a lucky break-even season look much the same, so
+  it is encouraging rather than established. Every 2026 pick is being logged before kickoff
+  and will be published win or lose, which is the only thing that settles it.</p>
   </div>
 </section>
 
