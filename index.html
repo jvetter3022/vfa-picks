@@ -136,6 +136,12 @@ h1 em{font-style:normal;color:var(--tx3)}
   font-variant-numeric:tabular-nums;white-space:nowrap}
 .for .k{color:var(--for)} .for li span:last-child{color:var(--for)}
 .agst .k{color:var(--agst)} .agst li span:last-child{color:var(--agst)}
+.badge{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--brass);border:1px solid var(--brass);border-radius:2px;padding:2px 6px;
+  margin-left:9px;white-space:nowrap}
+.note{border-top:1px solid var(--line);background:var(--rail);padding:13px 20px 15px}
+.note .k{margin-bottom:6px;color:var(--brass)}
+.note p{margin:0;font-size:14.5px;line-height:1.55;color:var(--tx2)}
 .method{margin-top:40px;border:1px solid var(--line);background:var(--card);border-radius:3px}
 .method h3{font-family:var(--disp);text-transform:uppercase;letter-spacing:.07em;font-size:14px;
   margin:0;padding:14px 20px;border-bottom:1px solid var(--line);color:var(--tx2)}
@@ -166,8 +172,8 @@ footer p{margin:0 0 10px}
 <div class="wrap">
 <header>
   <p class="eyebrow">Vetter Football Analytics &middot; 2026 Season</p>
-  <h1>Week 1 Picks <em>4 plays</em></h1>
-  <p class="lede">The model priced all 16 games this week. These 4 are the only
+  <h1>Week 1 Picks <em>5 plays</em></h1>
+  <p class="lede">The model priced all 16 games this week. These 5 are the only
   ones that clear the filter below &mdash; the rest are not plays, and saying so is the
   point.</p>
 </header>
@@ -198,6 +204,23 @@ footer p{margin:0 0 10px}
         <div class="dcol for"><span class="k">What supports it</span><ul><li><span>NE quarterback play</span><span>+1.06</span></li><li><span>NE pass coverage</span><span>+0.99</span></li><li><span>NE offense</span><span>+0.72</span></li></ul></div>
         <div class="dcol agst"><span class="k">What argues against</span><ul><li><span>SEA defense</span><span>−1.30</span></li><li><span>SEA offense</span><span>−0.95</span></li></ul></div>
       </div>
+    </article>
+    <article class="pick">
+      <div class="ptop">
+        <div class="day">Sunday, September 13<span class="badge">added sep 13</span></div>
+        <h2>Falcons <span>at</span> Steelers</h2>
+        <div class="bet">ATL +6.5</div>
+      </div>
+      <div class="nums">
+        <div><span class="k">Market</span><span>PIT −6.5</span></div>
+        <div><span class="k">Model</span><span>PIT −4.4</span></div>
+        <div><span class="k">Key crossed</span><span>6</span></div>
+        <div><span class="k">Total</span><span>46.05 vs 40.5</span></div>
+      </div>
+      <div class="drv">
+        <div class="dcol for"><span class="k">What supports it</span><ul><li><span>ATL offense</span><span>+1.12</span></li><li><span>PIT pass coverage</span><span>+0.69</span></li><li><span>ATL route running</span><span>+0.55</span></li></ul></div>
+        <div class="dcol agst"><span class="k">What argues against</span><ul><li><span>ATL quarterback play</span><span>−2.07</span></li><li><span>ATL QB passing</span><span>−1.27</span></li></ul></div>
+      </div><div class="note"><span class="k">Why this one went up late</span><p>Added Sunday, September 13, about three hours before kickoff — this game was not on the original card. At PIT −3.5 the model&#x27;s number crossed no key number, so the game failed the filter. Both Atlanta quarterbacks were then ruled out — Tua Tagovailoa (oblique) and Michael Penix Jr. (knee) — and the market moved three full points to PIT −6.5. The model already has Atlanta&#x27;s backup in the lineup and moved six tenths of a point. That larger market move is what carried the number across a single key, so the disagreement here is narrow and specific: how much the quarterback change is worth. The model says less than three points. It is also the single largest argument against this pick, shown above — read that column before deciding it.</p></div>
     </article>
     <article class="pick">
       <div class="ptop">
@@ -302,7 +325,7 @@ footer p{margin:0 0 10px}
 </section>
 
 <footer>
-  <p><b>Updated 2026-09-08.</b> Lines shown are from DraftKings via ESPN at build time and will
+  <p><b>Updated 2026-09-13.</b> Lines shown are from DraftKings via ESPN at build time and will
   move. Confirm the number before placing anything.</p>
   <p><b>Privacy.</b> This page sets no cookies and runs no advertising or cross-site trackers. Fonts are served from this domain, not from Google. Anonymous page-view counts come from Cloudflare Web Analytics, which is cookieless and does not build a profile of you.</p>
   <p>For entertainment and research purposes only. This is not financial advice and not a
