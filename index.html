@@ -79,6 +79,24 @@ key-number filter, with the model drivers behind each and the backtest that qual
 .navout a{font:600 12px/1.3 var(--disp);letter-spacing:.09em;text-transform:uppercase;
   color:var(--brass);text-decoration:none;border-bottom:1px solid transparent}
 .navout a:hover{border-bottom-color:var(--brass)}
+/* The season-record banner: a full-width target, because the record is the second thing a
+   visitor wants after this week's plays and a 12px link was not finding it. */
+.seasonbar{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 12px;
+  margin:22px 0 0;padding:15px 20px;background:var(--card);
+  border:1px solid var(--line);border-left:3px solid var(--brass);border-radius:0 3px 3px 0;
+  text-decoration:none;color:inherit;transition:border-color .15s,background .15s}
+.seasonbar:hover{background:var(--rail);border-color:var(--brass)}
+.seasonbar .sb-lab{width:100%;font-family:var(--disp);text-transform:uppercase;
+  letter-spacing:.1em;font-size:11px;font-weight:600;color:var(--brass);margin-bottom:6px}
+.seasonbar .sb-fig{font-family:var(--disp);font-weight:700;font-size:clamp(30px,6vw,40px);
+  line-height:1;color:var(--tx);font-variant-numeric:tabular-nums}
+.seasonbar .sb-fig.pos{color:var(--for)} .seasonbar .sb-fig.neg{color:var(--agst)}
+.seasonbar .sb-sub{font-family:var(--disp);text-transform:uppercase;letter-spacing:.09em;
+  font-size:11px;font-weight:600;color:var(--tx3);margin-right:10px}
+.seasonbar .sb-n{font-family:var(--mono);font-size:12px;color:var(--tx2)}
+.seasonbar .sb-go{margin-left:auto;font-family:var(--disp);text-transform:uppercase;
+  letter-spacing:.09em;font-size:11.5px;font-weight:600;color:var(--brass);white-space:nowrap}
+@media (max-width:520px){.seasonbar .sb-go{margin-left:0;width:100%;margin-top:8px}}
 /* All-games table: the plays are marked so a reader can see which rows made the card without
    the page having to repeat them. */
 table.allg td{font-variant-numeric:tabular-nums}
@@ -184,7 +202,7 @@ footer p{margin:0 0 10px}
 <header>
   <p class="eyebrow">Vetter Football Analytics &middot; 2026 Season</p>
   <h1>Week 3 Picks <em>5 plays</em></h1>
-  <p class="navout"><a href="results.html">Season results &rarr;</a></p>
+  <a class="seasonbar" href="results.html"><span class="sb-lab">Season results</span><span class="sb-fig">6&ndash;4</span><span class="sb-sub">record</span><span class="sb-fig pos">+1.45</span><span class="sb-sub">units</span><span class="sb-n">over 10 graded bets</span><span class="sb-go">Full ledger &rarr;</span></a>
   <p class="lede">5 plays this week. Every game the model priced is listed at the
   bottom.</p>
 </header>
